@@ -1,9 +1,9 @@
 Name: YOUR NAME HERE
 
-| Date    |  Time  |                                     Update |
-|:--------|:------:|-------------------------------------------:|
-| April 5 | 9-10pm | I tried to write abstract, efficient code. |
-|         |        |                                            |
+| Date   |    Time     |                                                                                                                                                                                                                                                                                                                                                                                                                                         Update |
+|:-------|:-----------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| Nov 19 | 9:30-9:40am |                               We did something thinking in class and thought of a possible solution. We thought that we could represent the binary using ints. Each sequence of 0 or 1 would just be replaced with an int of the count of them. The compressed version would just but a smaller list of ints which would take up less space. However there are still some things to consider like which bit is the current bit when expanding. |
+| Nov 30 | 8:30-9:30pm | After reading the papers that Mr. Blick gave us in class, I decided to take my first attempt that implementation. Turns out, run-length encoding is not too complex conceptually and to implement. I think I got pretty close on my first try but I am struggling with navigating the terminal because it has been so long and I forgot how over the break. I will ask Mr. Blick to help my test my code and then make adjustments from there. |
 
 
 To add a new row to the table, click into a cell and then hit shift-enter.
