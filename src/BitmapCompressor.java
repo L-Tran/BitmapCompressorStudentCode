@@ -27,30 +27,34 @@
  */
 public class BitmapCompressor {
 
+    public static final int BITS_PER_NUM = 8;
     /**
      * Reads a sequence of bits from standard input, compresses them,
      * and writes the results to standard output.
      */
     public static void compress() {
-
-        String s = BinaryStdIn.readString();
-        int n = s.length();
-        BinaryStdOut.write(s.charAt(0));
+        boolean current = BinaryStdIn.readBoolean();
+        if(current) {
+            BinaryStdOut.write(0, BITS_PER_NUM);
+        }
         int count = 1;
-        for(int i = 1; i < n; i++) {
-            if(s.charAt(i) == s.charAt(i - 1)) {
+        while(!BinaryStdIn.isEmpty()) {
+            boolean next = BinaryStdIn.readBoolean();
+            if(current == next) {
                 count++;
                 if (count == 255) {
-                    BinaryStdOut.write(count);
-                    BinaryStdOut.write(0);
+                    BinaryStdOut.write(count, BITS_PER_NUM);
+                    BinaryStdOut.write(0, BITS_PER_NUM);
+                    count = 0;
                 }
             }
             else {
-                BinaryStdOut.write(count);
-                count = 0;
+                BinaryStdOut.write(count, BITS_PER_NUM);
+                current = next;
+                count = 1;
             }
         }
-
+        BinaryStdOut.write(count, BITS_PER_NUM);
         BinaryStdOut.close();
     }
 
@@ -59,11 +63,11 @@ public class BitmapCompressor {
      * and writes the results to standard output.
      */
     public static void expand() {
-        int bit = BinaryStdIn.readInt();
-        while (BinaryStdIn.isEmpty()) {
-            int count = BinaryStdIn.readInt();
+        int bit = 0;
+        while (!BinaryStdIn.isEmpty()) {
+            int count = BinaryStdIn.readInt(BITS_PER_NUM);
             for(int i = 0; i < count; i++) {
-                BinaryStdOut.write(bit);
+                BinaryStdOut.write(bit == 1);
             }
             bit = (bit + 1) % 2;
         }
